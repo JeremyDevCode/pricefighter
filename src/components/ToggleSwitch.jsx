@@ -11,7 +11,7 @@ function ToggleSwitch({ active, handleClick }) {
     >
       <span
         className={`absolute w-[20px] h-[20px] transition-all bg-white ${
-          active && 'left-[22px]'
+          active && 'left-[23px]'
         } rounded-full left-[2px] all`}
       ></span>
     </button>
