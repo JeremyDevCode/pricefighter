@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Settings } from '../components/Settings'
+import { Versus } from '../components/Versus'
 import { Gear } from '../icons/Gear'
 import { Play } from '../icons/Play'
 
@@ -7,7 +8,7 @@ export default function Home() {
   const [settings, setSettings] = useState(false)
 
   return (
-    <main className="flex items-center justify-between w-screen h-screen">
+    <main className="relative flex items-center justify-between w-screen h-screen">
       <nav className="absolute top-0 flex items-center justify-between w-full pt-6 px-14">
         <a href="#" className="text-white font-semibold text-[38px]">
           Score: 10
@@ -19,7 +20,8 @@ export default function Home() {
           {settings && <Settings />}
         </div>
       </nav>
-      <div className="flex flex-col items-center justify-center w-2/4 h-screen gap-5 text-white border-r-2 border-gray-500">
+      <Versus />
+      <div className="flex flex-col items-center justify-center w-2/4 h-screen gap-5 text-white border-r-2 border-[#444444]">
         <img
           className="w-2/4 bg-white h-1/3 rounded-3xl"
           src="https://img.freepik.com/foto-gratis/resumen-superficie-texturas-muro-piedra-hormigon-blanco_74190-8189.jpg?w=360"
@@ -31,7 +33,7 @@ export default function Home() {
         </small>
       </div>
 
-      <div className="flex flex-col items-center justify-center w-2/4 h-screen gap-5 text-white border-l-2 border-gray-500">
+      <div className="flex flex-col items-center justify-center w-2/4 h-screen gap-5 text-white border-l-2 border-[#444444]">
         <img
           className="w-2/4 bg-white h-1/3 rounded-3xl"
           src="https://img.freepik.com/foto-gratis/resumen-superficie-texturas-muro-piedra-hormigon-blanco_74190-8189.jpg?w=360"
