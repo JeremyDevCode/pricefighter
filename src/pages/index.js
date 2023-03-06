@@ -2,19 +2,13 @@ import { ArrowRight } from '../icons/ArrowRight'
 import { Play } from '../icons/Play'
 import { Gear } from '../icons/Gear'
 import { useModal } from '../context/ModalContext'
+import { Navbar } from '../components/Navbar'
 
 export default function Home() {
   const { setModalVisible } = useModal()
   return (
     <>
-      <nav className="absolute top-0 flex items-center justify-between w-full px-14 pt-6">
-        <a href="#" className="text-white font-semibold text-[1.1rem]">
-          Leaderboard
-        </a>
-        <button className="text-white">
-          <Gear />
-        </button>
-      </nav>
+      <Navbar/>
       <main className="flex flex-col items-center justify-center w-full h-screen gap-12">
         <h1 className="text-[6rem] leading-none font-extrabold text-center text-white">
           Price
