@@ -16,17 +16,20 @@ export default function Home() {
         </h1>
         <button
           onClick={() => setModalVisible(true)}
-          className="text-black w-[15rem] items-center justify-center flex gap-2 p-5 bg-white rounded-[2rem] font-semibold hover:scale-[1.06] transition-transform"
+          className="text-[#222] w-[15rem] items-center justify-center flex gap-2 p-5 bg-white rounded-[2rem] font-semibold hover:scale-[1.06] transition-transform"
         >
+          <Play className="fill-yellowalt stroke-yellowalt" size={24} />
           Let&apos;s play
-          <Play size={22} />
         </button>
         <a
           href=""
-          className="flex items-center text-gray-400 gap-2 text-[0.91rem] hover:text-gray-200 transition-colors"
+          className="peer flex items-center text-gray-400 gap-2 text-[0.91rem] hover:text-gray-200 transition-colors"
         >
           How to play
-          <ArrowRight size={18} />
+          <ArrowRight
+            className="peer-hover:translate-y-3 transition-transform"
+            size={18}
+          />
         </a>
       </main>
     </>
