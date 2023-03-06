@@ -40,10 +40,10 @@ export default function Home() {
         />
         <h2 className="text-5xl font-bold">Amazon Alexa Echo</h2>
         <div className="flex gap-5">
-          <button className="flex items-center justify-center gap-2 w-[265px] h-[100px] bg-white rounded-full text-[#D71C1C] text-[32px] font-semibold">
+          <button className="flex items-center justify-center gap-2 w-[265px] h-[100px] bg-white rounded-full text-[#D71C1C] text-[32px] font-semibold hover:scale-[1.06] transition-all hover:text-white hover:bg-[#D71C1C]">
             Expensive <Play className="-rotate-90 stroke-[3]" size="30" />
           </button>
-          <button className="flex items-center justify-center gap-2 w-[265px] h-[100px] bg-white rounded-full text-[#29BB1E] text-[32px] font-semibold">
+          <button className="flex items-center justify-center gap-2 w-[265px] h-[100px] bg-white rounded-full text-[#29BB1E] text-[32px] font-semibold hover:scale-[1.06] transition-all hover:text-white hover:bg-[#29BB1E]">
             Cheap <Play className="rotate-90 stroke-[3]" size="30" />
           </button>
         </div>

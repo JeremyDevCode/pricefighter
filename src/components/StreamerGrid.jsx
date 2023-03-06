@@ -7,7 +7,7 @@ export const StreamerGrid = ({ children }) => {
   const { streamerMode } = useSettings()
   return (
     <div
-      data-streamerMode={streamerMode}
+      data-streamermode={streamerMode}
       className="grid grid-cols-1 data-[streamerMode=true]:grid-cols-streamerMode"
     >
       <div
