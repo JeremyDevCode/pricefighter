@@ -8,7 +8,7 @@ export default function Home() {
   const [settings, setSettings] = useState(false)
 
   return (
-    <main className="relative flex items-center justify-between w-screen h-screen bg-[#000000]">
+    <main className="relative flex items-center justify-between w-full overflow-x-hidden h-screen bg-[#000000]">
       <div className="absolute w-screen h-screen bg-[#000000] opacity-70 z-10"></div>
       <nav className="absolute top-0 z-20 flex items-center justify-between w-full pt-6 px-14">
         <a href="#" className="text-white font-semibold text-[38px]">
