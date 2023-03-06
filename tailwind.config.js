@@ -5,6 +5,9 @@ module.exports = {
     extend: {
       gridTemplateColumns: {
         streamerMode: '285px auto'
+      },
+      colors: {
+        yellowalt: '#ffb200'
       }
     }
   },

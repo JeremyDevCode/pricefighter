@@ -35,7 +35,6 @@ function Settings() {
           <Minimize className="group-hover/fullscreen:stroke-[#111] stroke-[#999]" />
         </button>
       )}
-
       <div className="flex justify-between m-1">
         <p>Sound effects</p>
         <ToggleSwitch

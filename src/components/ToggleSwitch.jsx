@@ -4,7 +4,7 @@ function ToggleSwitch({ active, handleClick }) {
   return (
     <button
       data-active={active}
-      className="peer relative flex items-center h-[24px] w-[44px] rounded-full transition-all duration-300 hover:cursor-pointer bg-[#BBB] data-[active=true]:bg-[#0085EE]"
+      className="peer relative flex items-center h-[24px] w-[44px] rounded-full transition-all duration-300 hover:cursor-pointer bg-[#BBB] data-[active=true]:bg-yellowalt"
       onClick={handleClick}
     >
       <span
