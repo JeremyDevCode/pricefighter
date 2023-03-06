@@ -23,7 +23,7 @@ export default function Home() {
         </button>
         <a
           href=""
-          className="flex items-center text-gray-400 gap-2 text-[0.91rem]"
+          className="flex items-center text-gray-400 gap-2 text-[0.91rem] hover:text-gray-200 transition-colors"
         >
           How to play
           <ArrowRight size={18} />

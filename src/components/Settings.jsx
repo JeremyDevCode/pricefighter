@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
 import { FullScreen } from '../icons/FullScreen'
 import { ToggleSwitch } from './ToggleSwitch'
+import { useSettings } from '../context/SettingsContext'
 
 function Settings() {
-  const [sound, setSound] = useState(false)
-  const [streamerMode, setStreamerMode] = useState(false)
+  const { soundEffects, streamerMode, setSoundEffects, setStreamerMode } =
+    useSettings()
 
   return (
     <div className="w-[230px] bg-white absolute flex flex-col justify-center gap-5 right-0 top-10 p-5 rounded-xl">
@@ -14,7 +14,10 @@ function Settings() {
       </button>
       <div className="flex justify-between m-1">
         <p>Sound effects</p>
-        <ToggleSwitch active={sound} handleClick={() => setSound(!sound)} />
+        <ToggleSwitch
+          active={soundEffects}
+          handleClick={() => setSoundEffects(!soundEffects)}
+        />
       </div>
       <div className="flex justify-between m-1">
         <p>Streamer mode</p>
