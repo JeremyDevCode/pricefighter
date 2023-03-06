@@ -1,6 +1,5 @@
 import { ArrowRight } from '../icons/ArrowRight'
 import { Play } from '../icons/Play'
-import { Gear } from '../icons/Gear'
 import { useModal } from '../context/ModalContext'
 import { Navbar } from '../components/Navbar'
 
@@ -8,7 +7,7 @@ export default function Home() {
   const { setModalVisible } = useModal()
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <main className="flex flex-col items-center justify-center w-full h-screen gap-12">
         <h1 className="text-[6rem] leading-none font-extrabold text-center text-white">
           Price

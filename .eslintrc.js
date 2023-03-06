@@ -14,8 +14,8 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
-    "react/jsx-no-bind": "off",
-    "react/no-deprecated": "error",
+    'react/jsx-no-bind': 'off',
+    'react/no-deprecated': 'warn',
     'no-unused-vars': 'warn',
     'space-before-function-paren': ['warn', 'never']
   }
