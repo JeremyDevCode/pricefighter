@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FullScreen({ className, size = 24 }) {
+export const Camera = ({ className, size = 24 }) => {
   return (
     <svg
       className={className}
@@ -14,12 +14,8 @@ function FullScreen({ className, size = 24 }) {
       strokeLinecap="round"
       strokeLinejoin="round"
     >
-      <path d="M8 3H5a2 2 0 0 0-2 2v3"></path>
-      <path d="M21 8V5a2 2 0 0 0-2-2h-3"></path>
-      <path d="M3 16v3a2 2 0 0 0 2 2h3"></path>
-      <path d="M16 21h3a2 2 0 0 0 2-2v-3"></path>
+      <path d="m22 8-6 4 6 4V8Z"></path>
+      <rect x="2" y="6" width="14" height="12" rx="2" ry="2"></rect>
     </svg>
   )
 }
-
-export { FullScreen }

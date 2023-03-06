@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unknown-property */
 import Head from 'next/head'
 import { SettingsProvider } from '../context/SettingsContext'
-import { ModalProvider, useModal } from '../context/ModalContext'
-import '../styles/globals.css'
+import { ModalProvider } from '../context/ModalContext'
 import { Modal } from '../components/Modal'
+import { StreamerGrid } from '../components/StreamerGrid'
+import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -18,8 +19,12 @@ function MyApp({ Component, pageProps }) {
           ></link>
           <title>Price Fighter - Can you pick the right price?</title>
         </Head>
-        <Modal />
-        <Component {...pageProps} />
+        <StreamerGrid>
+          <div className="relative">
+            <Modal />
+            <Component {...pageProps} />
+          </div>
+        </StreamerGrid>
       </ModalProvider>
     </SettingsProvider>
   )
