@@ -7,6 +7,7 @@ import Link from 'next/link'
 
 export const Modal = () => {
   const { modalVisible, setModalVisible } = useModal()
+  const hideModal = () => setModalVisible(false)
   return (
     <div
       data-visible={modalVisible}
@@ -14,7 +15,7 @@ export const Modal = () => {
     >
       <div className="relative bg-[#191919] flex flex-col w-[30rem] text-white p-12 rounded-lg gap-4 text-center">
         <button
-          onClick={() => setModalVisible(false)}
+          onClick={hideModal}
           className="p-1 absolute top-6 right-6 text-[#666] hover:bg-[#fff1] rounded-md transition-colors hover:text-gray-300"
         >
           <Close size={20} />
@@ -37,6 +38,7 @@ export const Modal = () => {
         <span className="border-b-[1px] border-[#ffffff20] my-3" />
         <Link
           href="/game"
+          onClick={hideModal}
           className="flex items-center justify-center p-4 bg-white rounded-[32px] text-black gap-2"
         >
           <Play className="fill-yellowalt stroke-yellowalt" size={24} />
