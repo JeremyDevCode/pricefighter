@@ -20,7 +20,7 @@ export const Settings = () => {
     <div className="relative" ref={menuRef}>
       <button
         data-active={menuVisible}
-        className="p-[7px] text-white data-[active=true]:bg-[#fff2] rounded-md"
+        className="p-[7px] text-white data-[active=true]:bg-[#fff2] hover:bg-[#fff2] rounded-md transition-colors"
         onClick={() => setMenuVisible(!menuVisible)}
       >
         <Gear size={23} />
@@ -30,18 +30,24 @@ export const Settings = () => {
         className="w-[230px] bg-white absolute hidden flex-col justify-center gap-3 right-0 top-11 py-5 px-4 rounded-lg z-10 data-[visible=true]:flex"
       >
         <button
-          className="flex justify-between hover:bg-gray-100 group/fullscreen py-[6px] px-2 rounded-md text-[#111] transition-colors"
+          className="flex justify-between items-center hover:bg-gray-100 group/fullscreen py-[6px] px-2 rounded-md text-[#111] transition-colors"
           onClick={toggleFullscreen}
         >
           {fullscreen ? (
             <>
               Minimize
-              <Minimize className="group-hover/fullscreen:stroke-[#111] stroke-[#999]" />
+              <Minimize
+                size={20}
+                className="group-hover/fullscreen:stroke-[#111] stroke-[#999]"
+              />
             </>
           ) : (
             <>
               Fullscreen
-              <FullScreen className="group-hover/fullscreen:stroke-[#111] stroke-[#999] transition-colors" />
+              <FullScreen
+                size={20}
+                className="group-hover/fullscreen:stroke-[#111] stroke-[#999] transition-colors"
+              />
             </>
           )}
         </button>
