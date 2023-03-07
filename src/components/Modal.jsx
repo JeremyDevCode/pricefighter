@@ -3,6 +3,7 @@ import { Close } from '../icons/Close'
 import { useModal } from '../context/ModalContext'
 import Image from 'next/image'
 import { Play } from '../icons/Play'
+import Link from 'next/link'
 
 export const Modal = () => {
   const { modalVisible, setModalVisible } = useModal()
@@ -25,19 +26,22 @@ export const Modal = () => {
         </small>
         <div className="flex flex-col gap-6">
           <button className="flex items-center justify-center gap-2 p-4 bg-white rounded-[32px] text-black">
-            <Image src="/github.svg" height="32" width="32" />
+            <Image src="/github.svg" height={20} width={26} />
             Join with Github
           </button>
           <button className="flex items-center justify-center p-4 gap-2 bg-white rounded-[32px] text-black">
-            <Image src="/google.svg" height="24" width="28" />
+            <Image src="/google.svg" height={20} width={22} />
             Join with Google
           </button>
         </div>
         <span className="border-b-[1px] border-[#ffffff20] my-3" />
-        <button className="flex items-center justify-center p-4 bg-white rounded-[32px] text-black gap-2">
+        <Link
+          href="/game"
+          className="flex items-center justify-center p-4 bg-white rounded-[32px] text-black gap-2"
+        >
           <Play className="fill-yellowalt stroke-yellowalt" size={24} />
-          Play as Guest
-        </button>
+          Play as guest
+        </Link>
         <small className="text-[#888]">Your score will not be saved</small>
       </div>
     </div>

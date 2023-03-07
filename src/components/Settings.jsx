@@ -16,7 +16,7 @@ function Settings() {
   }
 
   return (
-    <div className="w-[230px] bg-white absolute flex flex-col justify-center gap-5 right-0 top-10 p-5 rounded-xl">
+    <div className="w-[230px] bg-white absolute flex flex-col justify-center gap-5 right-0 top-10 p-5 rounded-xl z-10">
       {!document.fullscreenElement && (
         <button
           className="flex justify-between hover:bg-gray-100 group/fullscreen py-[6px] px-1 rounded-md text-[#111]"
