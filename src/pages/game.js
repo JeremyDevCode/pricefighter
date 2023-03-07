@@ -1,12 +1,9 @@
-import { useState } from 'react'
 import { Settings } from '../components/Settings'
 import { Versus } from '../components/Versus'
-import { Gear } from '../icons/Gear'
+
 import { Play } from '../icons/Play'
 
 export default function Home() {
-  const [settings, setSettings] = useState(false)
-
   return (
     <main className="relative flex items-center justify-between w-full overflow-x-hidden h-screen bg-[#000000]">
       <div className="absolute w-screen h-screen bg-[#000000] opacity-70 z-10" />
@@ -14,12 +11,7 @@ export default function Home() {
         <a href="#" className="text-white font-semibold text-xl">
           Score: 10
         </a>
-        <div className="relative">
-          <button className="text-white" onClick={() => setSettings(!settings)}>
-            <Gear />
-          </button>
-          {settings && <Settings />}
-        </div>
+        <Settings />
       </nav>
       <Versus />
       <div className="flex flex-col items-center justify-center w-2/4 h-screen gap-5 text-white border-r-2 border-[#444444] bg-white">
