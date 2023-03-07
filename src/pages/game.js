@@ -1,11 +1,8 @@
 import { Settings } from '../components/Settings'
 import { Versus } from '../components/Versus'
-
 import { Play } from '../icons/Play'
 
 export default function Home() {
-  const [settings, setSettings] = useState(false)
-
   function play() {
     var audio = document.getElementById('a1')
     audio.play()
