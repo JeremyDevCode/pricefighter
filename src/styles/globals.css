@@ -12,5 +12,20 @@ body * {
 }
 
 body {
-  background-color: #0A0A0A;
+  background-color: #0a0a0a;
+  overflow-x: hidden;
+}
+
+.green-gradient {
+  background: -webkit-linear-gradient(#ffb200, white 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.red-gradient {
+  background: -webkit-linear-gradient(white 50%, #fd2626);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

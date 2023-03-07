@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       gridTemplateColumns: {
-        streamerMode: '285px auto'
+        streamerMode: '285px calc(100vw - 285px)',
+        background: 'repeat(5,1fr)'
       },
       colors: {
         yellowalt: '#ffb200'

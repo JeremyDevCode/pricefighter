@@ -2,35 +2,35 @@ import { ArrowRight } from '../icons/ArrowRight'
 import { Play } from '../icons/Play'
 import { useModal } from '../context/ModalContext'
 import { Navbar } from '../components/Navbar'
+import Link from 'next/link'
+import { Background } from '../components/Background'
 
 export default function Home() {
   const { setModalVisible } = useModal()
   return (
     <>
       <Navbar />
-      <main className="flex flex-col items-center justify-center w-full h-screen gap-12">
-        <h1 className="text-[6rem] leading-none font-extrabold text-center text-white">
-          Price
+      <Background />
+      <main className="z-10 flex flex-col items-center justify-center w-full min-h-screen gap-12">
+        <h1 className="text-[7rem] leading-none font-extrabold text-center text-white">
+          <span className="green-gradient">Price</span>
           <br />
-          Fighter
+          <span className="red-gradient">Fighter</span>
         </h1>
         <button
           onClick={() => setModalVisible(true)}
-          className="text-[#222] w-[15rem] items-center justify-center flex gap-2 p-5 bg-white rounded-[2rem] font-semibold hover:scale-[1.06] transition-transform"
+          className="text-[#111] w-[15rem] items-center justify-center flex gap-2 p-5 bg-white rounded-[2rem] font-semibold text-[1.1rem] hover:scale-[1.06] transition-transform"
         >
-          <Play className="fill-yellowalt stroke-yellowalt" size={24} />
+          <Play size={24} className="fill-yellowalt stroke-yellowalt" />
           Let&apos;s play
         </button>
-        <a
-          href=""
-          className="peer flex items-center text-gray-400 gap-2 text-[0.91rem] hover:text-gray-200 transition-colors"
+        <Link
+          href="/how-to-play"
+          className="flex items-center gap-2 text-gray-200 transition-colors peer hover:underline hover:underline-offset-4"
         >
           How to play
-          <ArrowRight
-            className="peer-hover:translate-y-3 transition-transform"
-            size={18}
-          />
-        </a>
+          <ArrowRight size={20} />
+        </Link>
       </main>
     </>
   )

@@ -26,12 +26,12 @@ export const Modal = () => {
           reflected on the leaderboard.
         </small>
         <div className="flex flex-col gap-6">
-          <button className="flex items-center justify-center gap-2 p-4 bg-white rounded-[32px] text-black">
-            <Image src="/github.svg" height={20} width={26} />
+          <button className="hover:scale-[1.04] transition-transform flex items-center justify-center gap-2 p-4 bg-white rounded-[32px] text-black">
+            <Image src="/github.svg" height={20} width={26} alt="Join with Github" />
             Join with Github
           </button>
-          <button className="flex items-center justify-center p-4 gap-2 bg-white rounded-[32px] text-black">
-            <Image src="/google.svg" height={20} width={22} />
+          <button className="hover:scale-[1.04] transition-transform flex items-center justify-center p-4 gap-2 bg-white rounded-[32px] text-black">
+            <Image src="/google.svg" height={20} width={22} alt="Join with Google" />
             Join with Google
           </button>
         </div>
@@ -39,9 +39,9 @@ export const Modal = () => {
         <Link
           href="/game"
           onClick={hideModal}
-          className="flex items-center justify-center p-4 bg-white rounded-[32px] text-black gap-2"
+          className="flex items-center justify-center p-4 bg-yellowalt rounded-[32px] text-black gap-2 hover:scale-[1.04] transition-transform"
         >
-          <Play className="fill-yellowalt stroke-yellowalt" size={24} />
+          <Play size={22} />
           Play as guest
         </Link>
         <small className="text-[#888]">Your score will not be saved</small>

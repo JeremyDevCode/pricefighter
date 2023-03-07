@@ -4,13 +4,13 @@ import { Play } from '../icons/Play'
 
 export default function Home() {
   function play() {
-    var audio = document.getElementById('a1')
+    const audio = document.getElementById('a1')
     audio.play()
   }
   return (
     <main className="relative flex items-center justify-between w-full overflow-x-hidden h-screen bg-[#000000]">
       <div className="absolute w-screen h-screen bg-[#000000] opacity-70 z-10" />
-      <nav className="absolute top-0 z-20 flex items-center justify-between w-full pt-6 px-14">
+      <nav className="absolute top-0 z-20 flex items-center justify-between w-full pt-4 px-14">
         <a href="#" className="text-xl font-semibold text-white">
           Score: 10
         </a>
@@ -20,7 +20,7 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center w-2/4 h-screen gap-5 text-white border-r-2 border-[#444444] bg-white">
         <img
           className="absolute h-2/4 rounded-3xl"
-          src="http://www.catalogo.claro.com.ec/uploads/imgs/productos/iphone-13-256gb/azul/zoom/01-iphone-13-256gb-azul-front.png"
+          src="/backgrounds/iphone.jpg"
         />
         <div className="z-10 flex flex-col items-center justify-center gap-3">
           <h2 className="text-3xl font-bold">iPhone 13 Pro Max</h2>
@@ -41,10 +41,10 @@ export default function Home() {
           <small className="text-lg font-semibold text-gray-400 ">is</small>
           <div className="flex flex-col gap-6">
             <button
-              className="py-5 px-11 flex items-center justify-center gap-2 bg-white rounded-full text-[#D71C1C] text-xl font-semibold hover:scale-[1.06] transition-all hover:text-white hover:bg-[#D71C1C]"
+              className="py-5 px-11 flex items-center justify-center gap-2 bg-transparent border-white border-2 rounded-full text-white text-xl font-semibold hover:scale-[1.06] transition-all  hover:bg-white hover:text-black"
               onClick={play}
             >
-              <Play className="-rotate-90 stroke-[2]" />
+              <Play className="-rotate-90 stroke-[2] fill-red-500 stroke-red-500" />
               Expensive
             </button>
             <audio id="a1" src="/successAnswer.wav">
@@ -52,8 +52,8 @@ export default function Home() {
               <code>audio</code> element.
             </audio>
 
-            <button className="py-5 px-11 flex items-center justify-center gap-2 bg-white rounded-full text-[#29BB1E] text-xl font-semibold hover:scale-[1.06] transition-all hover:text-white hover:bg-[#29BB1E]">
-              <Play className="rotate-90 stroke-[2]" />
+            <button className="py-5 px-11 flex items-center justify-center gap-2 bg-transparent border-2 border-white rounded-full text-white text-xl font-semibold hover:scale-[1.06] transition-all  hover:bg-white hover:text-black">
+              <Play className="rotate-90 stroke-[2] fill-green-500 stroke-green-500" />
               Cheap
             </button>
           </div>

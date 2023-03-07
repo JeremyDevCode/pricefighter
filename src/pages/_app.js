@@ -24,7 +24,7 @@ function MyApp({ Component, pageProps }) {
           <title>Price Fighter - Can you pick the right price?</title>
         </Head>
         <StreamerGrid>
-          <div className="relative">
+          <div className="relative overflow-hidden">
             <Modal />
             <Component {...pageProps} />
           </div>
