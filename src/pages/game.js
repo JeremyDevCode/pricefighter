@@ -8,6 +8,7 @@ import { useAuth } from '../context/AuthContext'
 import { ProductCard } from '../components/ProductCard'
 import { useSoundEffects } from '../context/SoundEffectsContext'
 import { FailModal } from '../components/FailModal'
+import { WinModal } from '../components/WinModal'
 
 const responses = {
   CHEAP: true,
@@ -114,6 +115,11 @@ export default function Home() {
           <FailModal
             modalVisible={fail}
             setModalVisible={(val) => setFail(val)}
+            currentScore={score}
+          />
+          <WinModal
+            modalVisible={win}
+            setModalVisible={score > 18 && setWin(true)}
             currentScore={score}
           />
         </>
