@@ -36,11 +36,11 @@ export const FailModal = ({
       className="backdrop-blur-sm z-30 absolute top-0 left-0 w-full h-full hidden data-[visible=true]:flex items-center justify-center"
     >
       <div className="relative bg-[#191919] flex flex-col w-[30rem] text-white p-12 rounded-lg gap-4 text-center">
-        <h1 className="font-bold text-[2.5rem]">Oops! Perdiste!</h1>
         <img
-          className="rounded-lg"
+          className="rounded-2xl h-44 w-44 mx-auto"
           src="https://media.tenor.com/ZxO72WTtSqIAAAAd/applecat.gif"
         />
+        <h1 className="font-bold text-[2.5rem]">Oops! Perdiste!</h1>
         <h1 className="font-bold text-[2.5rem]">HAHA</h1>
 
         <p className="text-[#aaa] mb-4">{randomMessage}</p>
