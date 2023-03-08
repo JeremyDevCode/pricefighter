@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Settings } from '../components/Settings'
 import { Versus } from '../components/Versus'
 import { useSettings } from '../context/SettingsContext'
@@ -11,21 +11,21 @@ export default function Home() {
 
   const { auth } = useAuth()
   const [score, setScore] = useState(0)
+  const successRef = useRef()
+  const failRef = useRef()
+  const introRef = useRef()
   function Success() {
-    const ok = document.getElementById('ok')
-    if (soundEffects) ok.play()
+    if (soundEffects) successRef.current.play()
   }
   function Fail() {
-    const fail = document.getElementById('fail')
-    if (soundEffects) fail.play()
+    if (soundEffects) failRef.play()
   }
-  // useEffect(() => {
-  //   function Intro() {
-  //     const intro = document.getElementById('intro')
-  //     if (soundEffects) intro.play()
-  //   }
-  //   Intro()
-  // })
+  useEffect(() => {
+    function Intro() {
+      if (soundEffects) introRef.play()
+    }
+    Intro()
+  }, [])
 
   return (
     <main className="relative flex items-center justify-between w-[150%] overflow-x-hidden h-screen bg-[#000000]">
@@ -40,7 +40,7 @@ export default function Home() {
         </div>
       </nav>
       <Versus />
-      <div className="flex flex-col items-center justify-center w-1/3 h-screen gap-5 text-white border-r-2 border-[#444444] bg-white translate-x-[-100%] transition-all duration-1000">
+      <div className="flex flex-col items-center justify-center w-1/3 h-screen gap-5 text-white border-r-2 border-[#444444] bg-white transition-all duration-1000">
         <img
           className="absolute h-1/3 rounded-3xl"
           src="/backgrounds/iphone.jpg"
@@ -94,15 +94,15 @@ export default function Home() {
           <small className="text-lg font-semibold text-gray-400 ">is</small>
         </div>
       </div>
-      <audio id="ok" src="/sounds/ok.wav">
+      <audio ref={successRef} src="/sounds/ok.wav">
         Your browser does not support the
         <code>audio</code> element.
       </audio>
-      <audio id="fail" src="/sounds/fail.wav">
+      <audio ref={failRef} src="/sounds/fail.wav">
         Your browser does not support the
         <code>audio</code> element.
       </audio>
-      <audio id="intro" src="/sounds/intro.wav">
+      <audio ref={introRef} src="/sounds/intro.wav">
         Your browser does not support the
         <code>audio</code> element.
       </audio>
