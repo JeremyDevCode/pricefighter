@@ -5,7 +5,7 @@ const ModalContext = createContext()
 export const useModal = () => {
   const context = useContext(ModalContext)
   if (!context) {
-    throw new Error('Missing CartContextProvider to use cart context')
+    throw new Error('Missing ModalProvider to use cart context')
   }
   return context
 }

@@ -4,9 +4,19 @@ import { useModal } from '../context/ModalContext'
 import { Navbar } from '../components/Navbar'
 import Link from 'next/link'
 import { Background } from '../components/Background'
+import { useAuth } from '../context/AuthContext'
+import { useRouter } from 'next/router'
 
 export default function Home() {
   const { setModalVisible } = useModal()
+  const router = useRouter()
+  const { auth } = useAuth()
+
+  const handlePLaying = () => {
+    if (auth) router.push('/game')
+    else setModalVisible(true)
+  }
+
   return (
     <>
       <Navbar />
@@ -18,7 +28,7 @@ export default function Home() {
           <span className="red-gradient">Fighter</span>
         </h1>
         <button
-          onClick={() => setModalVisible(true)}
+          onClick={handlePLaying}
           className="text-[#111] w-[15rem] items-center justify-center flex gap-2 p-5 bg-white rounded-[2rem] font-semibold text-[1.1rem] hover:scale-[1.06] transition-transform"
         >
           <Play size={24} className="fill-yellowalt stroke-yellowalt" />
