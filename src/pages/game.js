@@ -32,7 +32,7 @@ function shuffleProducts(productsList) {
 export default function Home() {
   const [isLoading, setLoading] = useState(true)
   const [productslist, setProductsList] = useState([])
-  const dataFetchedRef = useRef(false);
+  const dataFetchedRef = useRef(false)
   const { auth } = useAuth()
   const [score, setScore] = useState(0)
   const { play } = useSoundEffects()
@@ -42,8 +42,8 @@ export default function Home() {
 
   useEffect(() => {
     const getData = async () => {
-      if (dataFetchedRef.current) return;
-      dataFetchedRef.current = true;
+      if (dataFetchedRef.current) return
+      dataFetchedRef.current = true
       setLoading(true)
       try {
         const response = await fetch(
