@@ -5,12 +5,14 @@ import { AuthWidget } from '../components/AuthWidget'
 import { useAuth } from '../context/AuthContext'
 import { ProductCard } from '../components/ProductCard'
 import { useSoundEffects } from '../context/SoundEffectsContext'
+import { FailModal } from '../components/FailModal'
 
 export default function Home() {
   const { auth } = useAuth()
   const [score, setScore] = useState(0)
   const { play } = useSoundEffects()
   const carouselRef = useRef()
+  const [fail, setFail] = useState(false)
 
   useEffect(() => {
     play.Intro()
@@ -38,13 +40,15 @@ export default function Home() {
       <Versus />
       <div className="carousel-container">
         <div className="carousel-viewport" ref={carouselRef}>
-          <ProductCard product="/backgrounds/iphone.jpg" exposed />
+          <ProductCard />
           <ProductCard handleClick={scrollAnimation} />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          <ProductCard handleClick={scrollAnimation} />
+          <ProductCard handleClick={scrollAnimation} />
+          <ProductCard handleClick={scrollAnimation} />
+          <ProductCard handleClick={scrollAnimation} />
         </div>
       </div>
+      <FailModal modalVisible={fail} setModalVisible={(val) => setFail(val)} />
     </main>
   )
 }

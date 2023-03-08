@@ -46,7 +46,7 @@ body {
   width: 100%;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
-  transition: all 200ms ease;
+  transition: all 350ms ease;
 }
 
 .carousel-item {

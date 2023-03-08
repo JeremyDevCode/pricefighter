@@ -13,7 +13,7 @@ export const Modal = () => {
   return (
     <div
       data-visible={modalVisible}
-      className="backdrop-blur-sm z-10 absolute top-0 left-0 w-full h-full hidden data-[visible=true]:flex items-center justify-center"
+      className="backdrop-blur-sm z-30 absolute top-0 left-0 w-full h-full hidden data-[visible=true]:flex items-center justify-center"
     >
       <div className="relative bg-[#191919] flex flex-col w-[30rem] text-white p-12 rounded-lg gap-4 text-center">
         <button
