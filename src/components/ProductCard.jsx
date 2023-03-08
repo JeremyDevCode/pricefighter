@@ -1,49 +1,18 @@
-import { useSoundEffects } from '../context/SoundEffectsContext'
+/* eslint-disable multiline-ternary */
 import { Play } from '../icons/Play'
 
+const responses = {
+  CHEAP: true,
+  EXPENSIVE: false
+}
+
 export const ProductCard = ({
-  index,
-  selectedProduct,
-  setSelectedProduct,
-  products,
   image = '/biblethump.png',
   name = 'Aqui iba mas info T_T',
   price = '',
   exposed = false,
-  handleClick,
-  handleFail
+  handleClick
 }) => {
-  const { play } = useSoundEffects()
-
-  function validateResponse(response, event) {
-    let left_price = products[index - 1].price
-    let right_price = products[index].price
-    let correct_result = left_price >= right_price ? 'cheaper' : 'expensive'
-    console.log(left_price, right_price, correct_result)
-    console.log(response)
-    if (response != correct_result) {
-      play.Fail()
-      console.log('END')
-      handleFail(true)
-    } else {
-      play.Ok()
-      setSelectedProduct(selectedProduct + 1)
-      handleClick(event)
-    }
-  }
-
-  const selectExpensive = (event) => {
-    validateResponse('expensive', event)
-  }
-
-  const selectCheaper = (event) => {
-    validateResponse('cheaper', event)
-  }
-
-  if (index == selectedProduct) {
-    exposed = true
-  }
-
   if (exposed) {
     return (
       <div className="carousel-item flex-col items-center justify-center w-[50%] h-full gap-5 text-white overflow-hidden">
@@ -72,7 +41,7 @@ export const ProductCard = ({
           <small className="text-lg font-semibold text-gray-400 ">is</small>
           <div className="flex flex-col gap-6">
             <button
-              onClick={selectExpensive}
+              onClick={() => handleClick(responses.EXPENSIVE)}
               className="py-5 px-11 flex items-center justify-center gap-2 bg-transparent border-white border-2 rounded-full text-white text-xl font-semibold hover:scale-[1.06] transition-all  hover:bg-white hover:text-black"
             >
               <Play className="-rotate-90 stroke-[2] fill-red-500 stroke-red-500" />
@@ -80,7 +49,7 @@ export const ProductCard = ({
             </button>
 
             <button
-              onClick={selectCheaper}
+              onClick={() => handleClick(responses.CHEAP)}
               className="py-5 px-11 flex items-center justify-center gap-2 bg-transparent border-2 border-white rounded-full text-white text-xl font-semibold hover:scale-[1.06] transition-all  hover:bg-white hover:text-black"
             >
               <Play className="rotate-90 stroke-[2] fill-green-500 stroke-green-500" />
