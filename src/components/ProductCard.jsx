@@ -11,7 +11,8 @@ export const ProductCard = ({
   price = '',
   exposed = false,
   handleClick,
-  handleFail
+  handleFail,
+  handleWin
 }) => {
   const { play } = useSoundEffects()
 
