@@ -1,15 +1,19 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Settings } from '../components/Settings'
 import { Versus } from '../components/Versus'
 import { useSettings } from '../context/SettingsContext'
 import { Play } from '../icons/Play'
+import { AuthWidget } from '../components/AuthWidget'
+import { useAuth } from '../context/AuthContext'
 
 export default function Home() {
   const { soundEffects } = useSettings()
 
+  const { auth } = useAuth()
+  const [score, setScore] = useState(0)
   function Success() {
-    const ok = document.getElementById('ok')
-    if (soundEffects) ok.play()
+    const audio = document.getElementById('a1')
+    audio.play()
   }
   function Fail() {
     const fail = document.getElementById('fail')
@@ -28,9 +32,12 @@ export default function Home() {
       <div className="absolute w-screen h-screen bg-[#000000] opacity-70 z-10" />
       <nav className="absolute top-0 z-20 flex items-center justify-between w-[66%] pt-4 px-14">
         <a href="#" className="text-xl font-semibold text-white">
-          Score: 10
+          Score: {score}
         </a>
-        <Settings />
+        <div className="flex items-center gap-4">
+          {auth && <AuthWidget />}
+          <Settings />
+        </div>
       </nav>
       <Versus />
       <div className="flex flex-col items-center justify-center w-1/3 h-screen gap-5 text-white border-r-2 border-[#444444] bg-white transition-all duration-1000">

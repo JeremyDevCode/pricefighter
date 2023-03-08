@@ -4,9 +4,11 @@ import { useModal } from '../context/ModalContext'
 import Image from 'next/image'
 import { Play } from '../icons/Play'
 import Link from 'next/link'
+import { useAuth } from '../context/AuthContext'
 
 export const Modal = () => {
   const { modalVisible, setModalVisible } = useModal()
+  const { signInWithGitHub } = useAuth()
   const hideModal = () => setModalVisible(false)
   return (
     <div
@@ -26,12 +28,25 @@ export const Modal = () => {
           reflected on the leaderboard.
         </small>
         <div className="flex flex-col gap-6">
-          <button className="hover:scale-[1.04] transition-transform flex items-center justify-center gap-2 p-4 bg-white rounded-[32px] text-black">
-            <Image src="/github.svg" height={20} width={26} alt="Join with Github" />
+          <button
+            onClick={signInWithGitHub}
+            className="hover:scale-[1.04] transition-transform flex items-center justify-center gap-2 p-4 bg-white rounded-[32px] text-black"
+          >
+            <Image
+              src="/github.svg"
+              height={20}
+              width={26}
+              alt="Join with Github"
+            />
             Join with Github
           </button>
           <button className="hover:scale-[1.04] transition-transform flex items-center justify-center p-4 gap-2 bg-white rounded-[32px] text-black">
-            <Image src="/google.svg" height={20} width={22} alt="Join with Google" />
+            <Image
+              src="/google.svg"
+              height={20}
+              width={22}
+              alt="Join with Google"
+            />
             Join with Google
           </button>
         </div>
