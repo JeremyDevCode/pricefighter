@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext'
 
 export const AuthWidget = () => {
   const menuRef = useRef()
-  const { auth } = useAuth()
+  const { auth, signOut } = useAuth()
   const [menuVisible, setMenuVisible] = useState(false)
   useOutsideClickListener(menuRef, () => setMenuVisible(false))
 
@@ -28,7 +28,10 @@ export const AuthWidget = () => {
         data-visible={menuVisible}
         className="w-[230px] bg-white absolute hidden flex-col justify-center gap-3 right-0 top-14 py-2 px-2 rounded-lg z-10 data-[visible=true]:flex"
       >
-        <button className="flex justify-between items-center group/fullscreen py-[6px] px-2 rounded-md text-[#111] transition-colors hover:bg-red-100 hover:text-red-600">
+        <button
+          onClick={signOut}
+          className="flex justify-between items-center group/fullscreen py-[6px] px-2 rounded-md text-[#111] transition-colors hover:bg-red-100 hover:text-red-600"
+        >
           Logout
           <Logout size={18} />
         </button>

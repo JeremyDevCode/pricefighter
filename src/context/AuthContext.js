@@ -9,6 +9,7 @@ const AuthContext = createContext()
  * @typedef {Object} AuthState Authentication object that contains authentication state and methods
  * @property {Object} auth Object that contains authentication information
  * @property {Function} signInWithGitHub Function that allows to sign in with GitHub
+ * @property {Function} signInWithGoogle Function that allows to sign in with Google
  * @property {Function} signOut Function that allows to signOut
  *
  * @returns {AuthState} Authentication object that contains authentication state and methods
@@ -26,22 +27,31 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     supabaseClient.auth.onAuthStateChange((event, session) => {
-      const { user, access_token: accessToken } = session
-      if (user) {
-        setAuth(buildUser(user, accessToken))
+      if (session) {
+        setAuth(buildUser(session.user, session.access_token))
       } else setAuth(null)
     })
   }, [])
 
   async function signInWithGitHub() {
     const { data, error } = await supabaseClient.auth.signInWithOAuth({
-      provider: 'github'
+      provider: 'github',
+      options: { redirectTo: 'http://localhost:3000/game' }
+    })
+    console.log(data, error)
+  }
+
+  async function signInWithGoogle() {
+    const { data, error } = await supabaseClient.auth.signInWithOAuth({
+      provider: 'google',
+      options: { redirectTo: 'http://localhost:3000/game' }
     })
     console.log(data, error)
   }
 
   async function signOut() {
     const { error } = await supabaseClient.auth.signOut()
+    console.log(error)
   }
 
   return (
@@ -49,6 +59,7 @@ const AuthProvider = ({ children }) => {
       value={{
         auth,
         signInWithGitHub,
+        signInWithGoogle,
         signOut
       }}
     >

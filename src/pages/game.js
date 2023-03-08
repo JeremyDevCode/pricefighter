@@ -1,8 +1,11 @@
+import { AuthWidget } from '../components/AuthWidget'
 import { Settings } from '../components/Settings'
 import { Versus } from '../components/Versus'
+import { useAuth } from '../context/AuthContext'
 import { Play } from '../icons/Play'
 
 export default function Home() {
+  const { auth } = useAuth()
   function play() {
     const audio = document.getElementById('a1')
     audio.play()
@@ -14,7 +17,10 @@ export default function Home() {
         <a href="#" className="text-xl font-semibold text-white">
           Score: 10
         </a>
-        <Settings />
+        <div className="flex items-center gap-4">
+          {auth && <AuthWidget />}
+          <Settings />
+        </div>
       </nav>
       <Versus />
       <div className="flex flex-col items-center justify-center w-2/4 h-screen gap-5 text-white border-r-2 border-[#444444] bg-white">
