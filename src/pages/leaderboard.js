@@ -42,6 +42,11 @@ function leaderboard() {
               score={item.score}
             />
           ))}
+        {(!boardlist || boardlist.length === 0) && (
+          <div>
+            <h1 className="text-gray-500 font-semibold">No hay usuarios para mostrar</h1>
+          </div>
+        )}
       </div>
     </section>
   )
