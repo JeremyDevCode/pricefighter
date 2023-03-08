@@ -2,7 +2,6 @@ function Developer({ children, username, work = '' }) {
   let githubLink = ''
   let avatarLink =
     'https://www.mindbreeze.com/sites/default/files/imagepicker/981/code10.png'
-  console.log(username)
   if (username !== undefined) {
     githubLink = `https://www.github.com/${username}`
     avatarLink = `${githubLink}.png`
