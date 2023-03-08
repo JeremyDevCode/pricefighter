@@ -17,11 +17,13 @@ export const ProductCard = ({
     return (
       <div className="carousel-item flex-col items-center justify-center w-[50%] h-full gap-5 text-white overflow-hidden">
         <img className="w-full h-full object-cover" src={image} />
-        <div className="absolute h-full w-full bg-[#0008] flex flex-col items-center justify-center gap-3">
+        <div className="absolute h-full w-full bg-[#000a] flex flex-col items-center text-center justify-center gap-3">
           <h2 className="text-3xl font-bold">{name}</h2>
           {price && (
             <>
-              <p className="font-extrabold text-6xl text-[#FFB800]">${price}</p>
+              <p className="font-extrabold text-6xl text-[#FFB800] align-top">
+                ${price} <span className="text-2xl text-yellow-600">USD</span>
+              </p>
               <small className="text-lg font-semibold text-gray-400">
                 Average price
               </small>
@@ -34,7 +36,7 @@ export const ProductCard = ({
     return (
       <div className="carousel-item  flex-col items-center justify-center w-[50%] h-full gap-5 text-white overflow-hidden">
         <img className="w-full h-full object-cover" src={image} />
-        <div className="absolute h-full w-full bg-[#0008] flex flex-col items-center justify-center gap-3">
+        <div className="absolute h-full w-full bg-[#000a] flex flex-col items-center text-center justify-center gap-3">
           <h2 className="text-3xl font-bold">{name}</h2>
           <small className="text-lg font-semibold text-gray-400 ">is</small>
           <div className="flex flex-col gap-6">
