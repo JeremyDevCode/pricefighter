@@ -4,7 +4,6 @@ import { Play } from '../icons/Play'
 import { ArrowRight } from '../icons/ArrowRight'
 import Link from 'next/link'
 
-
 export const FailModal = ({
   modalVisible,
   setModalVisible,
@@ -18,13 +17,15 @@ export const FailModal = ({
 
   const [randomMessage, setRandomMessage] = useState()
 
-  let messages = ["Hasta hamburguesa hace mas puntos",
-    "Ya perdiste? sigue un !kukoro?",
-    "Alomejor eres mas de Kuroro...",
-    "Toma un gracias por jugar",
-    "Ya perdiste tan rapido? pero, no leiste el how-to-play? a no hay, es verdad..."]
+  const messages = [
+    'Hasta hamburguesa hace mas puntos...',
+    '¿Ya perdiste? ¿Sigue un !kukoro?',
+    'A lo mejor eres mas de Kuroro...',
+    'Toma un gracias por jugar',
+    '¿Ya perdiste tan rapido? Pero, no leiste el how-to-play? ah no hay, es verdad...'
+  ]
 
-  let selectedMessage = messages[Math.floor(Math.random() * messages.length)]
+  const selectedMessage = messages[Math.floor(Math.random() * messages.length)]
 
   useEffect(() => {
     setRandomMessage(selectedMessage)
@@ -42,11 +43,12 @@ export const FailModal = ({
         >
           <Close size={20} />
         </button> */}
-        <img className='rounded-lg' src="https://media.tenor.com/ZxO72WTtSqIAAAAd/applecat.gif" />
+        <img
+          className="rounded-lg"
+          src="https://media.tenor.com/ZxO72WTtSqIAAAAd/applecat.gif"
+        />
         <h1 className="font-bold text-[2.5rem]">HAHA</h1>
-        <p className="text-[#aaa] mb-4">
-          {randomMessage}
-        </p>
+        <p className="text-[#aaa] mb-4">{randomMessage}</p>
         <span className="text-lg font-semibold mb-4">
           Your score: {currentScore}
         </span>

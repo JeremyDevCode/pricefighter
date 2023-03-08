@@ -1,7 +1,6 @@
 import { useSoundEffects } from '../context/SoundEffectsContext'
 import { Play } from '../icons/Play'
 
-
 export const ProductCard = ({
   index,
   selectedProduct,
@@ -9,7 +8,7 @@ export const ProductCard = ({
   products,
   image = '/biblethump.png',
   name = 'Aqui iba mas info T_T',
-  price = "",
+  price = '',
   exposed = false,
   handleClick,
   handleFail
@@ -17,17 +16,16 @@ export const ProductCard = ({
   const { play } = useSoundEffects()
 
   function validateResponse(response, event) {
-    let left_price = products[index - 1].price
-    let right_price = products[index].price
-    let correct_result = left_price >= right_price ? "cheaper" : "expensive"
-    console.log(left_price, right_price, correct_result)
+    const leftPrice = products[index - 1].price
+    const rightPrice = products[index].price
+    const correctResult = leftPrice >= rightPrice ? 'cheaper' : 'expensive'
+    console.log(leftPrice, rightPrice, correctResult)
     console.log(response)
-    if (response != correct_result) {
+    if (response !== correctResult) {
       play.Fail()
-      console.log("END")
+      console.log('END')
       handleFail(true)
-    }
-    else {
+    } else {
       play.Ok()
       setSelectedProduct(selectedProduct + 1)
       handleClick(event)
@@ -35,14 +33,14 @@ export const ProductCard = ({
   }
 
   const selectExpensive = (event) => {
-    validateResponse("expensive", event)
+    validateResponse('expensive', event)
   }
 
   const selectCheaper = (event) => {
-    validateResponse("cheaper", event)
+    validateResponse('cheaper', event)
   }
 
-  if (index == selectedProduct) {
+  if (index === selectedProduct) {
     exposed = true
   }
 
@@ -52,12 +50,14 @@ export const ProductCard = ({
         <img className="w-full h-full object-cover" src={image} />
         <div className="absolute h-full w-full bg-[#0008] flex flex-col items-center justify-center gap-3">
           <h2 className="text-3xl font-bold">{name}</h2>
-          {price ? <>
-            <p className="font-extrabold text-6xl text-[#FFB800]">${price}</p>
-            <small className="text-lg font-semibold text-gray-400">
-              Average price
-            </small>
-          </> : <></>}
+          {price && (
+            <>
+              <p className="font-extrabold text-6xl text-[#FFB800]">${price}</p>
+              <small className="text-lg font-semibold text-gray-400">
+                Average price
+              </small>
+            </>
+          )}
         </div>
       </div>
     )
