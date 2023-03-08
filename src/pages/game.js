@@ -40,9 +40,10 @@ export default function Home() {
         <div className="carousel-viewport" ref={carouselRef}>
           <ProductCard product="/backgrounds/iphone.jpg" exposed />
           <ProductCard handleClick={scrollAnimation} />
-          <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          <ProductCard handleClick={scrollAnimation} />
+          <ProductCard handleClick={scrollAnimation} />
+          <ProductCard handleClick={scrollAnimation} />
+          <ProductCard handleClick={scrollAnimation} />
         </div>
       </div>
     </main>
