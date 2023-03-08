@@ -39,7 +39,7 @@ export const WinModal = ({
         <h1 className="font-bold text-[2.5rem]">¡Ganaste!</h1>
         <img
           className="rounded-lg"
-          src="https://media.tenor.com/ZxO72WTtSqIAAAAd/applecat.gif"
+          src="https://tenor.com/view/minions-gif-26254840"
         />
         <h1 className="font-bold text-[2.5rem]">Felicidades</h1>
 
