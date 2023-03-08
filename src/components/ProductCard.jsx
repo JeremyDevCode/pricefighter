@@ -57,7 +57,7 @@ export const ProductCard = ({
             </button>
           </div>
           <small className="text-lg font-semibold text-gray-400">
-            Compared to {name}
+            Compared to the other product
           </small>
         </div>
       </div>
