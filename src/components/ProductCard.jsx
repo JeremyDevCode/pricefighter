@@ -1,18 +1,49 @@
 import { useSoundEffects } from '../context/SoundEffectsContext'
 import { Play } from '../icons/Play'
 
+
 export const ProductCard = ({
-  image = '/backgrounds/mac.jpg',
-  name = 'Some Nice product',
-  price = '2300',
+  index,
+  selectedProduct,
+  setSelectedProduct,
+  products,
+  image = '/biblethump.png',
+  name = 'Aqui iba mas info T_T',
+  price = "",
   exposed = false,
-  handleClick
+  handleClick,
+  handleFail
 }) => {
   const { play } = useSoundEffects()
 
-  const handleUserResponse = (event) => {
-    handleClick(event)
-    play.Ok()
+  function validateResponse(response, event) {
+    let left_price = products[index - 1].price
+    let right_price = products[index].price
+    let correct_result = left_price >= right_price ? "cheaper" : "expensive"
+    console.log(left_price, right_price, correct_result)
+    console.log(response)
+    if (response != correct_result) {
+      play.Fail()
+      console.log("END")
+      handleFail(true)
+    }
+    else {
+      play.Ok()
+      setSelectedProduct(selectedProduct + 1)
+      handleClick(event)
+    }
+  }
+
+  const selectExpensive = (event) => {
+    validateResponse("expensive", event)
+  }
+
+  const selectCheaper = (event) => {
+    validateResponse("cheaper", event)
+  }
+
+  if (index == selectedProduct) {
+    exposed = true
   }
 
   if (exposed) {
@@ -21,10 +52,12 @@ export const ProductCard = ({
         <img className="w-full h-full object-cover" src={image} />
         <div className="absolute h-full w-full bg-[#0008] flex flex-col items-center justify-center gap-3">
           <h2 className="text-3xl font-bold">{name}</h2>
-          <p className="font-extrabold text-6xl text-[#FFB800]">${price}</p>
-          <small className="text-lg font-semibold text-gray-400">
-            Average price
-          </small>
+          {price ? <>
+            <p className="font-extrabold text-6xl text-[#FFB800]">${price}</p>
+            <small className="text-lg font-semibold text-gray-400">
+              Average price
+            </small>
+          </> : <></>}
         </div>
       </div>
     )
@@ -37,7 +70,7 @@ export const ProductCard = ({
           <small className="text-lg font-semibold text-gray-400 ">is</small>
           <div className="flex flex-col gap-6">
             <button
-              onClick={handleUserResponse}
+              onClick={selectExpensive}
               className="py-5 px-11 flex items-center justify-center gap-2 bg-transparent border-white border-2 rounded-full text-white text-xl font-semibold hover:scale-[1.06] transition-all  hover:bg-white hover:text-black"
             >
               <Play className="-rotate-90 stroke-[2] fill-red-500 stroke-red-500" />
@@ -45,7 +78,7 @@ export const ProductCard = ({
             </button>
 
             <button
-              onClick={handleUserResponse}
+              onClick={selectCheaper}
               className="py-5 px-11 flex items-center justify-center gap-2 bg-transparent border-2 border-white rounded-full text-white text-xl font-semibold hover:scale-[1.06] transition-all  hover:bg-white hover:text-black"
             >
               <Play className="rotate-90 stroke-[2] fill-green-500 stroke-green-500" />

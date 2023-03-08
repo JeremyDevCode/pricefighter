@@ -7,7 +7,25 @@ import { ProductCard } from '../components/ProductCard'
 import { useSoundEffects } from '../context/SoundEffectsContext'
 import { FailModal } from '../components/FailModal'
 
+function shuffle(arra1) {
+  var ctr = arra1.length,
+    temp,
+    index;
+  while (ctr > 0) {
+    index = Math.floor(Math.random() * ctr);
+    ctr--;
+    temp = arra1[ctr];
+    arra1[ctr] = arra1[index];
+    arra1[index] = temp;
+  }
+  return arra1;
+}
+
 export default function Home() {
+  const [isLoading, setLoading] = useState(true)
+  const [status, setStatus] = useState(true)
+  const [selectedProduct, setSelectedProduct] = useState(0)
+  const [productslist, setProductsList] = useState([])
   const { auth } = useAuth()
   const [score, setScore] = useState(0)
   const { play } = useSoundEffects()
@@ -15,14 +33,28 @@ export default function Home() {
   const [fail, setFail] = useState(false)
 
   useEffect(() => {
+    const getData = async () => {
+      setLoading(true)
+      try {
+        let response = await fetch(
+          'https://hackafor-api.up.railway.app/products/'
+        )
+        const data = await response.json()
+        setProductsList(shuffle(data))
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setLoading(false)
+      }
+    }
+    getData()
     play.Intro()
   }, [])
 
   const scrollAnimation = () => {
     const scrollDistance = carouselRef.current.getBoundingClientRect().width
-    carouselRef.current.style.transform = `translateX( calc(${
-      score + 1
-    } * -${Math.round(scrollDistance / 2)}px))`
+    carouselRef.current.style.transform = `translateX( calc(${score + 1
+      } * -${Math.round(scrollDistance / 2)}px))`
     setScore(score + 1)
   }
 
@@ -37,18 +69,22 @@ export default function Home() {
           <Settings />
         </div>
       </nav>
-      <Versus />
-      <div className="carousel-container">
-        <div className="carousel-viewport" ref={carouselRef}>
-          <ProductCard />
-          <ProductCard handleClick={scrollAnimation} />
-          <ProductCard handleClick={scrollAnimation} />
-          <ProductCard handleClick={scrollAnimation} />
-          <ProductCard handleClick={scrollAnimation} />
-          <ProductCard handleClick={scrollAnimation} />
-        </div>
-      </div>
-      <FailModal modalVisible={fail} setModalVisible={(val) => setFail(val)} />
+      {
+        (isLoading) ?
+          <></> :
+          <>
+            <Versus />
+            <div className="carousel-container">
+              <div className="carousel-viewport" ref={carouselRef}>
+                {productslist.map(({ id, name, price, image }, index) => (
+                  <ProductCard key={id} index={index} selectedProduct={selectedProduct} products={productslist} setSelectedProduct={setSelectedProduct} name={name} price={price} image={image} handleClick={scrollAnimation} handleFail={setFail} />
+                ))}
+                <ProductCard />
+              </div>
+            </div>
+            <FailModal modalVisible={fail} setModalVisible={(val) => setFail(val)} currentScore={score} />
+          </>
+      }
     </main>
   )
 }
