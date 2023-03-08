@@ -1,3 +1,5 @@
+/* eslint-disable space-before-function-paren */
+/* eslint-disable multiline-ternary */
 import { useState, useEffect, useRef } from 'react'
 import { Settings } from '../components/Settings'
 import { Versus } from '../components/Versus'
@@ -8,22 +10,21 @@ import { useSoundEffects } from '../context/SoundEffectsContext'
 import { FailModal } from '../components/FailModal'
 
 function shuffle(arra1) {
-  var ctr = arra1.length,
-    temp,
-    index;
+  let ctr = arra1.length
+  let temp
+  let index
   while (ctr > 0) {
-    index = Math.floor(Math.random() * ctr);
-    ctr--;
-    temp = arra1[ctr];
-    arra1[ctr] = arra1[index];
-    arra1[index] = temp;
+    index = Math.floor(Math.random() * ctr)
+    ctr--
+    temp = arra1[ctr]
+    arra1[ctr] = arra1[index]
+    arra1[index] = temp
   }
-  return arra1;
+  return arra1
 }
 
 export default function Home() {
   const [isLoading, setLoading] = useState(true)
-  const [status, setStatus] = useState(true)
   const [selectedProduct, setSelectedProduct] = useState(0)
   const [productslist, setProductsList] = useState([])
   const { auth } = useAuth()
@@ -36,7 +37,7 @@ export default function Home() {
     const getData = async () => {
       setLoading(true)
       try {
-        let response = await fetch(
+        const response = await fetch(
           'https://hackafor-api.up.railway.app/products/'
         )
         const data = await response.json()
@@ -53,8 +54,9 @@ export default function Home() {
 
   const scrollAnimation = () => {
     const scrollDistance = carouselRef.current.getBoundingClientRect().width
-    carouselRef.current.style.transform = `translateX( calc(${score + 1
-      } * -${Math.round(scrollDistance / 2)}px))`
+    carouselRef.current.style.transform = `translateX( calc(${
+      score + 1
+    } * -${Math.round(scrollDistance / 2)}px))`
     setScore(score + 1)
   }
 
@@ -69,22 +71,37 @@ export default function Home() {
           <Settings />
         </div>
       </nav>
-      {
-        (isLoading) ?
-          <></> :
-          <>
-            <Versus />
-            <div className="carousel-container">
-              <div className="carousel-viewport" ref={carouselRef}>
-                {productslist.map(({ id, name, price, image }, index) => (
-                  <ProductCard key={id} index={index} selectedProduct={selectedProduct} products={productslist} setSelectedProduct={setSelectedProduct} name={name} price={price} image={image} handleClick={scrollAnimation} handleFail={setFail} />
-                ))}
-                <ProductCard />
-              </div>
+      {isLoading ? (
+        <></>
+      ) : (
+        <>
+          <Versus />
+          <div className="carousel-container">
+            <div className="carousel-viewport" ref={carouselRef}>
+              {productslist.map(({ id, name, price, image }, index) => (
+                <ProductCard
+                  key={id}
+                  index={index}
+                  selectedProduct={selectedProduct}
+                  products={productslist}
+                  setSelectedProduct={setSelectedProduct}
+                  name={name}
+                  price={price}
+                  image={image}
+                  handleClick={scrollAnimation}
+                  handleFail={setFail}
+                />
+              ))}
+              <ProductCard />
             </div>
-            <FailModal modalVisible={fail} setModalVisible={(val) => setFail(val)} currentScore={score} />
-          </>
-      }
+          </div>
+          <FailModal
+            modalVisible={fail}
+            setModalVisible={(val) => setFail(val)}
+            currentScore={score}
+          />
+        </>
+      )}
     </main>
   )
 }
