@@ -19,15 +19,13 @@ export const ProductCard = ({
         <img className="w-full h-full object-cover" src={image} />
         <div className="absolute h-full w-full bg-[#0008] flex flex-col items-center justify-center gap-3">
           <h2 className="text-3xl font-bold">{name}</h2>
-          {price ? (
+          {price && (
             <>
               <p className="font-extrabold text-6xl text-[#FFB800]">${price}</p>
               <small className="text-lg font-semibold text-gray-400">
                 Average price
               </small>
             </>
-          ) : (
-            <></>
           )}
         </div>
       </div>
