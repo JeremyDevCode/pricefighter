@@ -1,9 +1,11 @@
 import { useRef, useState } from 'react'
 import { useOutsideClickListener } from '../hooks/useClickOutsideListener'
 import { Logout } from '../icons/Logout'
+import { useAuth } from '../context/AuthContext'
 
 export const AuthWidget = () => {
   const menuRef = useRef()
+  const { auth } = useAuth()
   const [menuVisible, setMenuVisible] = useState(false)
   useOutsideClickListener(menuRef, () => setMenuVisible(false))
 
@@ -14,7 +16,13 @@ export const AuthWidget = () => {
         className="p-[5px] text-white hover:bg-[#fff2] data-[active=true]:bg-[#fff2] rounded-full transition-colors"
         onClick={() => setMenuVisible(!menuVisible)}
       >
-        <div className="w-[32px] h-[32px] rounded-full bg-[#fff2]"></div>
+        <div className="w-[32px] h-[32px] rounded-full bg-[#fff2]">
+          <img
+            className="h-full w-full rounded-full"
+            src={auth?.userAvatar}
+            alt={auth?.userName}
+          />
+        </div>
       </button>
       <div
         data-visible={menuVisible}
