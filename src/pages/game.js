@@ -10,11 +10,6 @@ import { useSoundEffects } from '../context/SoundEffectsContext'
 import { FailModal } from '../components/FailModal'
 import { WinModal } from '../components/WinModal'
 
-const responses = {
-  CHEAP: true,
-  EXPENSIVE: false
-}
-
 function shuffleProducts(productsList) {
   let ctr = productsList.length
   let temp
@@ -32,6 +27,7 @@ function shuffleProducts(productsList) {
 export default function Home() {
   const [isLoading, setLoading] = useState(true)
   const [productslist, setProductsList] = useState([])
+  const dataFetchedRef = useRef(false)
   const { auth } = useAuth()
   const [score, setScore] = useState(0)
   const { play } = useSoundEffects()
@@ -41,6 +37,8 @@ export default function Home() {
 
   useEffect(() => {
     const getData = async () => {
+      if (dataFetchedRef.current) return
+      dataFetchedRef.current = true
       setLoading(true)
       try {
         const response = await fetch(
@@ -50,12 +48,11 @@ export default function Home() {
         setProductsList(shuffleProducts(data))
       } catch (error) {
         console.log(error)
-      } finally {
-        setLoading(false)
       }
+      setLoading(false)
     }
-    getData()
     play.Intro()
+    getData()
   }, [])
 
   useEffect(() => {
