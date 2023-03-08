@@ -36,7 +36,7 @@ const AuthProvider = ({ children }) => {
   async function signInWithGitHub() {
     const { data, error } = await supabaseClient.auth.signInWithOAuth({
       provider: 'github',
-      options: { redirectTo: 'http://localhost:3000/game' }
+      options: { redirectTo: `${process.env.NEXT_PUBLIC_GAME_URL}/game` }
     })
     console.log(data, error)
   }
@@ -44,7 +44,7 @@ const AuthProvider = ({ children }) => {
   async function signInWithGoogle() {
     const { data, error } = await supabaseClient.auth.signInWithOAuth({
       provider: 'google',
-      options: { redirectTo: 'http://localhost:3000/game' }
+      options: { redirectTo: `${process.env.NEXT_PUBLIC_GAME_URL}/game` }
     })
     console.log(data, error)
   }
