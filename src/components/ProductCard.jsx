@@ -16,12 +16,12 @@ export const ProductCard = ({
   const { play } = useSoundEffects()
 
   function validateResponse(response, event) {
-    let left_price = products[index - 1].price
-    let right_price = products[index].price
-    let correct_result = left_price >= right_price ? 'cheaper' : 'expensive'
-    console.log(left_price, right_price, correct_result)
+    const leftPrice = products[index - 1].price
+    const rightPrice = products[index].price
+    const correctResult = leftPrice >= rightPrice ? 'cheaper' : 'expensive'
+    console.log(leftPrice, rightPrice, correctResult)
     console.log(response)
-    if (response != correct_result) {
+    if (response !== correctResult) {
       play.Fail()
       console.log('END')
       handleFail(true)
@@ -40,7 +40,7 @@ export const ProductCard = ({
     validateResponse('cheaper', event)
   }
 
-  if (index == selectedProduct) {
+  if (index === selectedProduct) {
     exposed = true
   }
 
@@ -50,15 +50,13 @@ export const ProductCard = ({
         <img className="w-full h-full object-cover" src={image} />
         <div className="absolute h-full w-full bg-[#0008] flex flex-col items-center justify-center gap-3">
           <h2 className="text-3xl font-bold">{name}</h2>
-          {price ? (
+          {price && (
             <>
               <p className="font-extrabold text-6xl text-[#FFB800]">${price}</p>
               <small className="text-lg font-semibold text-gray-400">
                 Average price
               </small>
             </>
-          ) : (
-            <></>
           )}
         </div>
       </div>
