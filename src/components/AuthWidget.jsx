@@ -18,7 +18,7 @@ export const AuthWidget = () => {
       >
         <div className="w-[32px] h-[32px] rounded-full bg-[#fff2]">
           <img
-            className="h-full w-full rounded-full"
+            className="h-full w-full rounded-full text-[0.7rem] text-[#555] flex items-center justify-center overflow-hidden"
             src={auth?.userAvatar}
             alt={auth?.userName}
           />
