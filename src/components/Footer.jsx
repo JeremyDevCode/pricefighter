@@ -9,16 +9,16 @@ function Developer({ children, username, work = '' }) {
   return (
     <a
       href={githubLink}
-      className="flex items-center justify-center pt-2 pb-2 pr-3 pl-3 gap-2 rounded-xl"
+      className="flex items-center justify-center gap-2 rounded-xl"
     >
       <img
-        className="bg-white h-[50px] w-full object-contain rounded-full max-w-[50px]"
+        className="bg-white h-[42px] object-contain rounded-full w-[42px]"
         src={avatarLink}
-        alt=""
+        alt={username}
       />
-      <div className="flex flex-col">
-        <h2 className="text-[#fff]">{children}</h2>
-        <small className="text-[#fff]">{work}</small>
+      <div className="flex flex-col items-start">
+        <p className="text-[#fff] text-[0.91rem] -mb-1">{children}</p>
+        <small className="text-gray-400">{work}</small>
       </div>
     </a>
   )
@@ -26,18 +26,21 @@ function Developer({ children, username, work = '' }) {
 
 export default function Footer() {
   return (
-    <footer className="absolute bottom-0 flex flex-wrap items-center justify-center w-full pt-6 px-14 z-20 mb-5">
-      <Developer username="devenapuros" work="Frontend">
-        DevEnApuros
-      </Developer>
-      <Developer username="JeremyDevCode" work="Frontend">
-        Jeremy
-      </Developer>
-      <Developer username="chermdev" work="Backend">
-        Charlyy
-      </Developer>
-      <Developer work="Design">Lorem29</Developer>
-      <Developer work="Backend">toni0215</Developer>
+    <footer className="absolute bottom-3 w-full flex flex-col justify-center items-center text-center gap-3">
+      <small className="text-gray-300">Made by:</small>
+      <div className="flex flex-wrap gap-10 items-center justify-center z-20">
+        <Developer username="devenapuros" work="Frontend">
+          DevEnApuros
+        </Developer>
+        <Developer username="JeremyDevCode" work="Frontend">
+          Jeremy
+        </Developer>
+        <Developer username="chermdev" work="Backend">
+          Charlyy
+        </Developer>
+        <Developer work="Design">Lorem29</Developer>
+        <Developer work="Backend">toni0215</Developer>
+      </div>
     </footer>
   )
 }

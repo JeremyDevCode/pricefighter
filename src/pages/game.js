@@ -116,7 +116,7 @@ export default function Home() {
           />
           <WinModal
             modalVisible={win}
-            setModalVisible={score > 18 && setWin(true)}
+            setModalVisible={(val) => setWin(val)}
             currentScore={score}
           />
         </>

@@ -41,7 +41,6 @@ export const FailModal = ({
           src="https://media.tenor.com/ZztVmkKG2TIAAAAM/pepe-sad-pepe-crying.gif"
         />
         <h1 className="font-bold text-[2.5rem]">Oops! Perdiste!</h1>
-        <h1 className="font-bold text-[2.5rem]">HAHA</h1>
 
         <p className="text-[#aaa] mb-4">{randomMessage}</p>
         <span className="text-lg font-semibold mb-4">
