@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { Background } from '../components/Background'
 import { useAuth } from '../context/AuthContext'
 import { useRouter } from 'next/router'
+import Footer from '../components/Footer'
 
 export default function Home() {
   const { setModalVisible } = useModal()
@@ -42,6 +43,7 @@ export default function Home() {
           <ArrowRight size={20} />
         </Link>
       </main>
+      <Footer />
     </>
   )
 }
