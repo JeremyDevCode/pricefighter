@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Close } from '../icons/Close'
 import { Play } from '../icons/Play'
 import { ArrowRight } from '../icons/ArrowRight'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 
 export const FailModal = ({
@@ -16,6 +15,21 @@ export const FailModal = ({
     setModalVisible(false)
     window.location.reload(true)
   }
+
+  const [randomMessage, setRandomMessage] = useState()
+
+  let messages = ["Hasta hamburguesa hace mas puntos",
+    "Ya perdiste? sigue un !kukoro?",
+    "Alomejor eres mas de Kuroro...",
+    "Toma un gracias por jugar",
+    "Ya perdiste tan rapido? pero, no leiste el how-to-play? a no hay, es verdad..."]
+
+  let selectedMessage = messages[Math.floor(Math.random() * messages.length)]
+
+  useEffect(() => {
+    setRandomMessage(selectedMessage)
+  }, [modalVisible])
+
   return (
     <div
       data-visible={modalVisible}
@@ -28,9 +42,10 @@ export const FailModal = ({
         >
           <Close size={20} />
         </button> */}
-        <h1 className="font-bold text-[2.5rem]">Oops! you failed</h1>
+        <img className='rounded-lg' src="https://media.tenor.com/ZxO72WTtSqIAAAAd/applecat.gif" />
+        <h1 className="font-bold text-[2.5rem]">HAHA</h1>
         <p className="text-[#aaa] mb-4">
-          Maybe next time you will make your parents proud.
+          {randomMessage}
         </p>
         <span className="text-lg font-semibold mb-4">
           Your score: {currentScore}
