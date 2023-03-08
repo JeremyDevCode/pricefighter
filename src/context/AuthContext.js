@@ -28,6 +28,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     supabaseClient.auth.onAuthStateChange((event, session) => {
       if (session) {
+        console.log(session)
         setAuth(buildUser(session.user, session.access_token))
       } else setAuth(null)
     })

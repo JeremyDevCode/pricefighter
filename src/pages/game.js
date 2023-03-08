@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { AuthWidget } from '../components/AuthWidget'
 import { Settings } from '../components/Settings'
 import { Versus } from '../components/Versus'
@@ -6,6 +7,7 @@ import { Play } from '../icons/Play'
 
 export default function Home() {
   const { auth } = useAuth()
+  const [score, setScore] = useState(0)
   function play() {
     const audio = document.getElementById('a1')
     audio.play()
@@ -15,7 +17,7 @@ export default function Home() {
       <div className="absolute w-screen h-screen bg-[#000000] opacity-70 z-10" />
       <nav className="absolute top-0 z-20 flex items-center justify-between w-full pt-4 px-14">
         <a href="#" className="text-xl font-semibold text-white">
-          Score: 10
+          Score: {score}
         </a>
         <div className="flex items-center gap-4">
           {auth && <AuthWidget />}

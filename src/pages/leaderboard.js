@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Navbar } from '../components/Navbar'
 import { ScoreCard } from '../components/ScoreCard'
 
 function leaderboard() {
+  const [boardlist, setBoardlist] = useState([])
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await fetch(
+          'https://hackafor-api.up.railway.app/ranking/'
+        )
+        const data = await response.json()
+        setBoardlist(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getData()
+  }, [])
+
   return (
     <section className="flex flex-col items-center justify-center">
       <Navbar />
@@ -15,11 +32,16 @@ function leaderboard() {
         <div className="flex items-start justify-start w-full py-5">
           <h2 className="text-2xl font-semibold text-white">Leaderboard</h2>
         </div>
-        <ScoreCard top={1} name={'DevEnApuros'} score={6348} />
-        <ScoreCard top={2} name={'Example'} score={5324} />
-        <ScoreCard top={3} name={'Example'} score={4212} />
-        <ScoreCard top={4} name={'Example'} score={3645} />
-        <ScoreCard top={5} name={'Example'} score={3213} />
+        {boardlist &&
+          boardlist.length > 0 &&
+          boardlist.map((item) => (
+            <ScoreCard
+              key={item.id}
+              top={item.rank}
+              name={item.username}
+              score={item.score}
+            />
+          ))}
       </div>
     </section>
   )
