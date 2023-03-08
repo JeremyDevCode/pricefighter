@@ -10,11 +10,6 @@ import { useSoundEffects } from '../context/SoundEffectsContext'
 import { FailModal } from '../components/FailModal'
 import { WinModal } from '../components/WinModal'
 
-const responses = {
-  CHEAP: true,
-  EXPENSIVE: false
-}
-
 function shuffleProducts(productsList) {
   let ctr = productsList.length
   let temp
