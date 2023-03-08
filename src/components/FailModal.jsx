@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { Close } from '../icons/Close'
 import { Play } from '../icons/Play'
 import { ArrowRight } from '../icons/ArrowRight'
 import Link from 'next/link'
