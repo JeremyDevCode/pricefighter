@@ -23,7 +23,7 @@ function shuffle(arra1) {
 
 export default function Home() {
   const [isLoading, setLoading] = useState(true)
-  const [status, setStatus] = useState(true)
+  // const [status, setStatus] = useState(true)
   const [selectedProduct, setSelectedProduct] = useState(0)
   const [productslist, setProductsList] = useState([])
   const { auth } = useAuth()
@@ -71,7 +71,9 @@ export default function Home() {
         </div>
       </nav>
       {isLoading ? (
-        <></>
+        <>
+          <h1>Loading...</h1>
+        </>
       ) : (
         <>
           <Versus />
