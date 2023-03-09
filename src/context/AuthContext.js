@@ -52,7 +52,7 @@ const AuthProvider = ({ children }) => {
       provider: 'github',
       options: { redirectTo: `${process.env.NEXT_PUBLIC_GAME_URL}/game` }
     })
-    console.log(data, error)
+    console.log(error)
   }
 
   async function signInWithGoogle() {
@@ -60,7 +60,7 @@ const AuthProvider = ({ children }) => {
       provider: 'google',
       options: { redirectTo: `${process.env.NEXT_PUBLIC_GAME_URL}/game` }
     })
-    console.log(data, error)
+    console.log(error)
   }
 
   async function signOut() {

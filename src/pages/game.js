@@ -55,7 +55,7 @@ export default function Home() {
               })
             }
           )
-          console.log(await response.json())
+          await response.json()
         }
       } catch (error) {
         console.log(error)
