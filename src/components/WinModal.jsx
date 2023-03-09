@@ -36,7 +36,7 @@ export const WinModal = ({
       className="backdrop-blur-sm z-30 absolute top-0 left-0 w-full h-full hidden data-[visible=true]:flex items-center justify-center"
     >
       <div className="relative bg-[#191919] flex flex-col w-[30rem] text-white p-12 rounded-lg gap-4 text-center">
-        <h1 className="font-bold text-[2.5rem]">¡Ganaste!</h1>
+        <h1 className="font-bold text-[2.5rem]">YOU WIN!</h1>
         <img
           className="rounded-2xl h-44 w-44 mx-auto"
           src="https://media.tenor.com/ZxO72WTtSqIAAAAd/applecat.gif"
@@ -47,6 +47,7 @@ export const WinModal = ({
         </span>
         <button
           onClick={reloadPage}
+          href="/game"
           className="flex items-center justify-center p-4 bg-yellowalt rounded-[32px] text-black gap-2 hover:scale-[1.04] transition-transform"
         >
           <Play size={22} />
