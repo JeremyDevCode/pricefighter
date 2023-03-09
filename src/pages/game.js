@@ -2,9 +2,7 @@
 /* eslint-disable multiline-ternary */
 import { Navbar } from '../components/Navbar'
 import { useState, useEffect, useRef } from 'react'
-import { Settings } from '../components/Settings'
 import { Versus } from '../components/Versus'
-import { AuthWidget } from '../components/AuthWidget'
 import { useAuth } from '../context/AuthContext'
 import { ProductCard } from '../components/ProductCard'
 import { useSoundEffects } from '../context/SoundEffectsContext'
@@ -26,7 +24,6 @@ function shuffleProducts(productsList) {
 }
 
 export default function Home() {
-
   const [isLoading, setLoading] = useState(true)
   const [gameOver, setGameOver] = useState(false)
   const [productslist, setProductsList] = useState([])
@@ -42,7 +39,7 @@ export default function Home() {
     const postScore = async () => {
       try {
         if (auth && gameOver) {
-          let response = await fetch(
+          const response = await fetch(
             'https://hackafor-api.up.railway.app/user/game_played/',
             {
               method: 'POST',
@@ -50,9 +47,7 @@ export default function Home() {
                 Authorization: `Bearer ${auth.accessToken}`,
                 'Content-Type': 'application/json'
               },
-              body: JSON.stringify({
-                score: score
-              })
+              body: JSON.stringify({ score: score })
             }
           )
           await response.json()
@@ -63,7 +58,6 @@ export default function Home() {
     }
     postScore()
   }, [gameOver])
-
 
   useEffect(() => {
     const getData = async () => {

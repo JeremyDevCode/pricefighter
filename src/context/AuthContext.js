@@ -48,7 +48,7 @@ const AuthProvider = ({ children }) => {
   }, [])
 
   async function signInWithGitHub() {
-    const { data, error } = await supabaseClient.auth.signInWithOAuth({
+    const { error } = await supabaseClient.auth.signInWithOAuth({
       provider: 'github',
       options: { redirectTo: `${process.env.NEXT_PUBLIC_GAME_URL}/game` }
     })
@@ -56,7 +56,7 @@ const AuthProvider = ({ children }) => {
   }
 
   async function signInWithGoogle() {
-    const { data, error } = await supabaseClient.auth.signInWithOAuth({
+    const { error } = await supabaseClient.auth.signInWithOAuth({
       provider: 'google',
       options: { redirectTo: `${process.env.NEXT_PUBLIC_GAME_URL}/game` }
     })

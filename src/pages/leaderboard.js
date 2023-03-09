@@ -57,59 +57,44 @@ function leaderboard() {
           <small className="font-semibold text-gray-500 mr-6">Score</small>
         </div>
         {
-          isLoadingUserRank ?
-            (
-              <h1 className="text-gray-500 font-semibold my-6">
-                Loading...
-              </h1>
-            ) :
-            (auth && currentRanking ? (
+          isLoadingUserRank ? (
+            <h1 className="text-gray-500 font-semibold my-6">
+              Loading...
+            </h1>) : (
+            auth && currentRanking ? (
               <ScoreCard
                 top={currentRanking.rank}
                 name={auth?.userName}
                 avatar={auth?.userAvatar}
-                score={currentRanking.score}
-              />
-            ) : gameMissing ? (
-              <h1 className="text-gray-500 font-semibold my-6">
-                Please play a game to see your score
-              </h1>
-            ) : (
-              <h1 className="text-gray-500 font-semibold my-6">
-                Please login to view your ranking
-              </h1>
-            ))
+                score={currentRanking.score} />) : gameMissing ? (
+                  <h1 className="text-gray-500 font-semibold my-6">
+                    Please play a game to see your score
+                  </h1>) : (<h1 className="text-gray-500 font-semibold my-6">
+                    Please login to view your ranking
+                  </h1>))
         }
         <div className="flex items-start justify-start w-full py-5">
           <h2 className="text-2xl font-semibold text-white">Leaderboard</h2>
         </div>
-        {isLoadingRanking ?
-          (
-            <h1 className="text-gray-500 font-semibold">
-              Loading
-            </h1>
-          ) :
-          (
-            (!boardlist || boardlist.length === 0) ?
-              (
-                <div>
-                  <h1 className="text-gray-500 font-semibold">
-                    No users to display
-                  </h1>
-                </div>
-              ) :
-              boardlist &&
-              boardlist.length > 0 &&
-              boardlist.map((item) => (
-                <ScoreCard
-                  key={item.id}
-                  top={item.rank}
-                  name={item.data?.user_metadata?.user_name}
-                  avatar={item.data?.user_metadata?.avatar_url}
-                  score={item.score}
-                />
-              ))
-          )}
+        {isLoadingRanking ? (
+          <h1 className="text-gray-500 font-semibold">
+            Loading
+          </h1>) : (
+          (!boardlist || boardlist.length === 0) ? (
+            <div>
+              <h1 className="text-gray-500 font-semibold">
+                No users to display
+              </h1>
+            </div>) : boardlist &&
+            boardlist.length > 0 && boardlist.map((item) => (
+              <ScoreCard
+                key={item.id}
+                top={item.rank}
+                name={item.data?.user_metadata?.user_name}
+                avatar={item.data?.user_metadata?.avatar_url}
+                score={item.score}
+              />))
+        )}
       </div>
     </section>
   )
