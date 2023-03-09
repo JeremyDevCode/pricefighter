@@ -8,10 +8,11 @@ const responses = {
 
 export const ProductCard = ({
   image = '/biblethump.png',
-  name = 'Aqui iba mas info T_T',
+  name = 'Llegaste al final!',
   price = '',
   exposed = false,
-  handleClick
+  handleClick,
+  displayButtons = true
 }) => {
   if (exposed) {
     return (
@@ -38,27 +39,31 @@ export const ProductCard = ({
         <img className="w-full h-full object-cover" src={image} />
         <div className="absolute h-full w-full bg-[#000a] flex flex-col items-center text-center justify-center gap-3">
           <h2 className="text-3xl font-bold">{name}</h2>
-          <small className="text-lg font-semibold text-gray-400 ">is</small>
-          <div className="flex flex-col gap-6">
-            <button
-              onClick={() => handleClick(responses.EXPENSIVE)}
-              className="py-5 px-11 flex items-center justify-center gap-2 bg-transparent border-white border-2 rounded-full text-white text-xl font-semibold hover:scale-[1.06] transition-all  hover:bg-white hover:text-black"
-            >
-              <Play className="-rotate-90 stroke-[2] fill-red-500 stroke-red-500" />
-              Expensive
-            </button>
+          {displayButtons && (
+            <>
+              <small className="text-lg font-semibold text-gray-400 ">is</small>
+              <div className="flex flex-col gap-6">
+                <button
+                  onClick={() => handleClick(responses.EXPENSIVE)}
+                  className="py-5 px-11 flex items-center justify-center gap-2 bg-transparent border-white border-2 rounded-full text-white text-xl font-semibold hover:scale-[1.06] transition-all  hover:bg-white hover:text-black"
+                >
+                  <Play className="-rotate-90 stroke-[2] fill-red-500 stroke-red-500" />
+                  Expensive
+                </button>
 
-            <button
-              onClick={() => handleClick(responses.CHEAP)}
-              className="py-5 px-11 flex items-center justify-center gap-2 bg-transparent border-2 border-white rounded-full text-white text-xl font-semibold hover:scale-[1.06] transition-all  hover:bg-white hover:text-black"
-            >
-              <Play className="rotate-90 stroke-[2] fill-green-500 stroke-green-500" />
-              Cheap
-            </button>
-          </div>
-          <small className="text-lg font-semibold text-gray-400">
-            Compared to {name}
-          </small>
+                <button
+                  onClick={() => handleClick(responses.CHEAP)}
+                  className="py-5 px-11 flex items-center justify-center gap-2 bg-transparent border-2 border-white rounded-full text-white text-xl font-semibold hover:scale-[1.06] transition-all  hover:bg-white hover:text-black"
+                >
+                  <Play className="rotate-90 stroke-[2] fill-green-500 stroke-green-500" />
+                  Cheap
+                </button>
+              </div>
+              <small className="text-lg font-semibold text-gray-400">
+                Compared to {name}
+              </small>
+            </>
+          )}
         </div>
       </div>
     )
