@@ -14,6 +14,12 @@ function Navbar() {
       >
         Leaderboard
       </Link>
+      <Link
+        href="/"
+        className="absolute right-1/2 translate-x-[50%] py-2 px-5 rounded-2xl transition-colors text-white font-semibold text-[1.1rem] hover:bg-[#fff1]"
+      >
+        Home
+      </Link>
       <div className="flex items-center gap-4">
         {auth && <AuthWidget />}
         <Settings />
