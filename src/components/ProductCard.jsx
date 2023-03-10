@@ -12,7 +12,8 @@ export const ProductCard = ({
   price = '',
   exposed = false,
   handleClick,
-  displayButtons = true
+  displayButtons = true,
+  comparedText = ""
 }) => {
   if (exposed) {
     return (
@@ -59,7 +60,7 @@ export const ProductCard = ({
                 </button>
               </div>
               <small className="text-lg font-semibold text-gray-400">
-                Compared to {name}
+                {comparedText}
               </small>
             </>
           )}
