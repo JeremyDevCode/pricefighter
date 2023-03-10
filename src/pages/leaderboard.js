@@ -9,23 +9,16 @@ function leaderboard() {
   const [boardlist, setBoardlist] = useState([])
   const [gameMissing, setGameMissing] = useState(false)
   const [currentRanking, setCurrentRanking] = useState(null)
-  const [isLoadingUserRank, setLoadingUserRank] = useState(true)
-  const [isLoadingRanking, setLoadingRanking] = useState(true)
+  const [isLoadingUserRank, setLoadingUserRank] = useState(false)
+  const [isLoadingRanking, setLoadingRanking] = useState(false)
   const { auth } = useAuth()
 
   useEffect(() => {
-    const getData = async () => {
+    const getUserRankingData = async () => {
       try {
-        setLoadingRanking(true)
-        let response = await fetch(
-          'https://hackafor-api.up.railway.app/ranking/'
-        )
-        const data = await response.json()
-        setBoardlist(data)
-        setLoadingRanking(false)
         if (auth) {
           setLoadingUserRank(true)
-          response = await fetch(
+          const response = await fetch(
             'https://hackafor-api.up.railway.app/user/ranking/',
             {
               headers: {
@@ -45,6 +38,23 @@ function leaderboard() {
         console.log(error)
       }
     }
+    getUserRankingData()
+  }, [auth])
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        setLoadingRanking(true)
+        const response = await fetch(
+          'https://hackafor-api.up.railway.app/ranking/'
+        )
+        const data = await response.json()
+        setBoardlist(data)
+        setLoadingRanking(false)
+      } catch (error) {
+        console.log(error)
+      }
+    }
     getData()
   }, [])
 
@@ -57,21 +67,26 @@ function leaderboard() {
           <small className="font-semibold text-gray-500 mr-6">Score</small>
         </div>
         {
-          isLoadingUserRank ? (
+          auth ? isLoadingUserRank ? (
             <h1 className="text-gray-500 font-semibold my-6">
               Loading...
-            </h1>) : (
-            auth && currentRanking ? (
+            </h1>
+          ) : (
+
+            currentRanking ? (
               <ScoreCard
                 top={currentRanking.rank}
                 name={auth?.userName}
                 avatar={auth?.userAvatar}
-                score={currentRanking.score} />) : gameMissing ? (
-                  <h1 className="text-gray-500 font-semibold my-6">
-                    Please play a game to see your score
-                  </h1>) : (<h1 className="text-gray-500 font-semibold my-6">
-                    Please login to view your ranking
-                  </h1>))
+                score={currentRanking.score} />) : (
+              <h1 className="text-gray-500 font-semibold my-6">
+                Please play a game to see your score
+              </h1>)
+          ) : (
+            <h1 className="text-gray-500 font-semibold my-6">
+              Please login to view your ranking
+            </h1>
+          )
         }
         <div className="flex items-start justify-start w-full py-5">
           <h2 className="text-2xl font-semibold text-white">Leaderboard</h2>
