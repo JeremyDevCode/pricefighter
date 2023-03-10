@@ -132,6 +132,7 @@ export default function Home() {
                   image={image}
                   handleClick={validateResponse}
                   exposed={index <= score}
+                  comparedText={index > score ? `compared to ${productslist[index - 1].name}` : ""}
                 />
               ))}
               <ProductCard displayButtons={false} />
