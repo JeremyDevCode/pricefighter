@@ -50,7 +50,6 @@ export const ProductCard = ({
                   <Play className="-rotate-90 stroke-[2] fill-red-500 stroke-red-500" />
                   Expensive
                 </button>
-
                 <button
                   onClick={() => handleClick(responses.CHEAP)}
                   className="py-5 px-11 flex items-center justify-center gap-2 bg-transparent border-2 border-white rounded-full text-white text-xl font-semibold hover:scale-[1.06] transition-all  hover:bg-white hover:text-black"
