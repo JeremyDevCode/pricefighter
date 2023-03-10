@@ -8,7 +8,7 @@ import { useAuth } from '../context/AuthContext'
 
 export const Modal = () => {
   const { modalVisible, setModalVisible } = useModal()
-  const { signInWithGitHub } = useAuth()
+  const { signInWithGitHub, signInWithGoogle } = useAuth()
   const hideModal = () => setModalVisible(false)
   return (
     <div
@@ -40,7 +40,9 @@ export const Modal = () => {
             />
             Join with Github
           </button>
-          <button className="hover:scale-[1.04] transition-transform flex items-center justify-center p-4 gap-2 bg-white rounded-[32px] text-black">
+          <button
+            onClick={signInWithGoogle}
+            className="hover:scale-[1.04] transition-transform flex items-center justify-center p-4 gap-2 bg-white rounded-[32px] text-black">
             <Image
               src="/google.svg"
               height={20}

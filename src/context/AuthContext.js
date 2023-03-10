@@ -28,25 +28,39 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     supabaseClient.auth.onAuthStateChange((event, session) => {
       if (session) {
-        setAuth(buildUser(session.user, session.access_token))
-      } else setAuth(null)
+        const builduser = buildUser(session.user, session.access_token)
+        setAuth(builduser)
+      } else {
+        setAuth(null)
+      }
     })
+    async function checkSession() {
+      const sessionRes = await supabaseClient.auth.getSession()
+      const sessionUser = sessionRes.data.session?.user
+      const sessionAccessToken = sessionRes.data.session?.access_token
+      if (sessionUser) {
+        const builduser = buildUser(sessionUser,
+          sessionAccessToken)
+        setAuth(builduser)
+      }
+    }
+    checkSession()
   }, [])
 
   async function signInWithGitHub() {
-    const { data, error } = await supabaseClient.auth.signInWithOAuth({
+    const { error } = await supabaseClient.auth.signInWithOAuth({
       provider: 'github',
       options: { redirectTo: `${process.env.NEXT_PUBLIC_GAME_URL}/game` }
     })
-    console.log(data, error)
+    console.log(error)
   }
 
   async function signInWithGoogle() {
-    const { data, error } = await supabaseClient.auth.signInWithOAuth({
+    const { error } = await supabaseClient.auth.signInWithOAuth({
       provider: 'google',
       options: { redirectTo: `${process.env.NEXT_PUBLIC_GAME_URL}/game` }
     })
-    console.log(data, error)
+    console.log(error)
   }
 
   async function signOut() {

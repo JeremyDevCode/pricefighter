@@ -1,9 +1,8 @@
 /* eslint-disable space-before-function-paren */
 /* eslint-disable multiline-ternary */
+import { Navbar } from '../components/Navbar'
 import { useState, useEffect, useRef } from 'react'
-import { Settings } from '../components/Settings'
 import { Versus } from '../components/Versus'
-import { AuthWidget } from '../components/AuthWidget'
 import { useAuth } from '../context/AuthContext'
 import { ProductCard } from '../components/ProductCard'
 import { useSoundEffects } from '../context/SoundEffectsContext'
@@ -26,6 +25,7 @@ function shuffleProducts(productsList) {
 
 export default function Home() {
   const [isLoading, setLoading] = useState(true)
+  const [gameOver, setGameOver] = useState(false)
   const [productslist, setProductsList] = useState([])
   const dataFetchedRef = useRef(false)
   const { auth } = useAuth()
@@ -34,6 +34,30 @@ export default function Home() {
   const carouselRef = useRef()
   const [fail, setFail] = useState(false)
   const [win, setWin] = useState(false)
+
+  useEffect(() => {
+    const postScore = async () => {
+      try {
+        if (auth && gameOver) {
+          const response = await fetch(
+            'https://hackafor-api.up.railway.app/user/game_played/',
+            {
+              method: 'POST',
+              headers: {
+                Authorization: `Bearer ${auth.accessToken}`,
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ score: score })
+            }
+          )
+          await response.json()
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    postScore()
+  }, [gameOver])
 
   useEffect(() => {
     const getData = async () => {
@@ -49,13 +73,20 @@ export default function Home() {
       } catch (error) {
         console.log(error)
       }
+      setGameOver(false)
       setLoading(false)
     }
-    play.Intro()
-    getData()
+    if (!gameOver) {
+      play.Intro()
+      getData()
+    }
   }, [])
 
   useEffect(() => {
+    if (score === productslist.length - 1) {
+      setWin(true)
+      setGameOver(true)
+    }
     if (carouselRef.current) {
       const scrollDistance = carouselRef.current.getBoundingClientRect().width
       carouselRef.current.style.transform = `translateX( calc(${score} * -${Math.round(
@@ -69,27 +100,24 @@ export default function Home() {
     const currentProduct = productslist[score + 1]
     const correctResponse = prevProduct.price - currentProduct.price > 0
     if (res === correctResponse) {
-      if (score === productslist.length - 1) setWin(true)
-      else setScore(score + 1)
+      setScore(score + 1)
       play.Ok()
     } else {
-      setFail(true)
       play.Fail()
+      setFail(true)
+      setGameOver(true)
     }
   }
 
   return (
     <main className="flex items-center justify-center relative overflow-x-hidden h-screen w-screen">
-      <nav className="absolute top-0 flex items-center justify-between w-full pt-6 px-14 z-10">
-        <a href="#" className="text-xl font-semibold text-white">
+      <Navbar />
+      <div className="absolute bottom-0 right-0 flex items-center w-full pb-6 px-14 z-10">
+        <a href="#" className="relative text-xl font-semibold text-white">
           Score: {score}
         </a>
-        <div className="flex items-center gap-4">
-          {auth && <AuthWidget />}
-          <Settings />
-        </div>
-      </nav>
-      {isLoading ? (
+      </div>
+      {(isLoading) ? (
         <></>
       ) : (
         <>
@@ -106,7 +134,7 @@ export default function Home() {
                   exposed={index <= score}
                 />
               ))}
-              <ProductCard />
+              <ProductCard displayButtons={false} />
             </div>
           </div>
           <FailModal

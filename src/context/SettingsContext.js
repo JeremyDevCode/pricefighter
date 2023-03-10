@@ -21,7 +21,7 @@ export const useSettings = () => {
 }
 
 const SettingsProvider = ({ children }) => {
-  const [soundEffects, setSoundEffects] = useState(true)
+  const [soundEffects, setSoundEffects] = useState(false)
   const [streamerMode, setStreamerMode] = useState(false)
 
   return (
