@@ -13,7 +13,7 @@ export const ProductCard = ({
   exposed = false,
   handleClick,
   displayButtons = true,
-  comparedText = ""
+  comparedText = ''
 }) => {
   if (exposed) {
     return (
