@@ -39,10 +39,7 @@ export default function Home() {
           content="https://res.cloudinary.com/deohsoirn/image/upload/v1680331123/Portfolio/additionalImages/priceFighter_bai58b.png"
         />
 
-        <meta
-          property="og:url"
-          content="https://weathernow-jeremydevcode.vercel.app"
-        />
+        <meta property="og:url" content="https://pricefighter.vercel.app" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Price Fighter" />
         <meta
