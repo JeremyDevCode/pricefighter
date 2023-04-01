@@ -26,13 +26,13 @@ export default function Home() {
         <meta name="og:site_name" content="Jeremy Mosquera" />
         <meta
           name="description"
-          content='The project consisted of creating a web minigame similar to "The Higher Lower Game" but we decided to compare product prices instead of visits!.'
+          content='The project consisted of creating a web minigame similar to "The Higher Lower Game" but we decided to compare product prices instead of visits!'
         ></meta>
 
         <meta itemProp="name" content="Price Fighter" />
         <meta
           itemProp="description"
-          content='The project consisted of creating a web minigame similar to "The Higher Lower Game" but we decided to compare product prices instead of visits!.'
+          content='The project consisted of creating a web minigame similar to "The Higher Lower Game" but we decided to compare product prices instead of visits!'
         />
         <meta
           itemProp="image"
@@ -44,7 +44,7 @@ export default function Home() {
         <meta property="og:title" content="Price Fighter" />
         <meta
           name="og:description"
-          content='The project consisted of creating a web minigame similar to "The Higher Lower Game" but we decided to compare product prices instead of visits!.'
+          content='The project consisted of creating a web minigame similar to "The Higher Lower Game" but we decided to compare product prices instead of visits!'
         ></meta>
         <meta
           property="og:image"
@@ -58,7 +58,7 @@ export default function Home() {
         <meta name="twitter:title" content="Price Fighter" />
         <meta
           name="twitter:description"
-          content='The project consisted of creating a web minigame similar to "The Higher Lower Game" but we decided to compare product prices instead of visits!.'
+          content='The project consisted of creating a web minigame similar to "The Higher Lower Game" but we decided to compare product prices instead of visits!'
         />
         <meta
           name="twitter:image"
